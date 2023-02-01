@@ -10,6 +10,8 @@ const nums = [0, 1, 2, 3, 4];
 let sum = nums.reduce((acc, curr) => acc + curr);
 console.log(sum);
 
+
+// second section
 const teamMembers = [
   {
     name: 'Andrew',
@@ -34,6 +36,23 @@ const teamMembers = [
 ];
 
 // Totaling a specific object property
+let totalExperience = teamMembers.reduce((acc, curr) => acc + curr.yrsExperience, 0); // needs to end in 0
+console.log(totalExperience);
+
 
 
 // Grouping by a property, and totaling it too
+// Result we want is {Developer: 12, Designer: 4}
+
+let experienceByProfession = teamMembers.reduce((acc, curr) => {
+  let key = curr.profession; // to find the profession in array
+  if (!acc[key]) {
+    acc[key] =  curr.yrsExperience; // finds the first set of array which is profession
+  } else {
+    acc[key] += curr.yrsExperience; // adds the years to it
+  }
+  return acc
+
+}, {}) //this will mean it will enter into an array - intial value
+
+console.log(experienceByProfession);
